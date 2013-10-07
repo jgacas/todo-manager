@@ -20,9 +20,3 @@ Route::get('test', function()
 {
 	return 'Hello world!';
 });
-/*
-Route::get('/test', function()
-{
-	return 'Hello test!';
-});
-*/
