@@ -3,4 +3,7 @@
 composer.phar
 composer.lock
 .DS_Store
+# eclipse project files
 .project
+.classpth
+.settings
