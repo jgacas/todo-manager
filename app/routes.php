@@ -57,3 +57,16 @@ Route::group(array('prefix' => 'admin'), function()
 
 /* Route that uses Greeting Controller */
 Route::get('greeting', 'GreetingController@showGreeting');
+
+/* Route that creates 'users' table in the todo_manager database */
+Route::get('create/users', function()
+{
+	Schema::create('users', function($table)
+	{
+		$table->increments('id');
+		$table->string('first_name', 20);
+		$table->string('last_name', 20);
+		$table->string('password', 60);
+		$table->string('email', 320);
+	});
+});
