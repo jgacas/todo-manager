@@ -21,7 +21,39 @@ Route::get('test', function()
 	return 'ToDo Manager!';
 });
 
-Route::get('test/jg', function()
+Route::any('test/jg', function()
 {
 	return 'ToDo Manager by JG!';
 });
+
+Route::get('test/print', function()
+{
+	return URL::to('test/print');
+});
+/*
+Route::get('user/{id}', function($id)
+{
+	return 'User '.$id;
+});
+*/
+
+/* Registering Sub-Domain Routes */
+Route::group(array('domain' => '{account}.todomanager.local'), function()
+{
+	Route::get('user/{id}', function($account, $id)
+	{
+		return 'User account '.$account.', id '.$id;
+	});
+});
+
+/* Prefixing grouped routes */
+Route::group(array('prefix' => 'admin'), function()
+{
+	Route::get('user', function()
+	{
+		return 'Admin user with prefix!';
+	});
+});
+
+/* Route that uses Greeting Controller */
+Route::get('greeting', 'GreetingController@showGreeting');
