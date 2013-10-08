@@ -70,3 +70,8 @@ Route::get('create/users', function()
 		$table->string('email', 320);
 	});
 });
+
+Route::get('drop/users', function()
+{
+	Schema::drop('users');
+});
