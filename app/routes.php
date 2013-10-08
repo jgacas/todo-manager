@@ -20,3 +20,8 @@ Route::get('test', function()
 {
 	return 'ToDo Manager!';
 });
+
+Route::get('test/jg', function()
+{
+	return 'ToDo Manager by JG!';
+});
