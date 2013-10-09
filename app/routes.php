@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -75,3 +77,24 @@ Route::get('drop/users', function()
 {
 	Schema::drop('users');
 });
+
+/* route to example blade template */
+Route::get('example/{squirrel}', function($squirrel)
+{
+	$data['squirrel'] = $squirrel;
+	return View::make('example', $data);
+});
+
+/* route to login blade template */
+Route::get('login', function()
+{
+	return View::make('login');
+});
+
+Route::post('processLogin', 'LoginController@login');
+
+/* protect route 'profile' */
+Route::get('profile', array('before' => 'auth', function()
+{
+	return 'Welcome to ToDo Manager';
+}));
