@@ -28,6 +28,9 @@ Route::get('login', 'LoginController@login');
 
 Route::get('logout', 'LoginController@logout');
 
-Route::post('processLogin', 'LoginController@processLogin');
+Route::post('processLogin', array(
+	'before' => 'csrf', 
+	'uses' => 'LoginController@processLogin'
+));
 
 

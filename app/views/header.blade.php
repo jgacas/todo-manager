@@ -1,10 +1,10 @@
 <!-- app/views/header.blade.php -->
 
-<div class="header">
-	<h1>ToDo Manager</h1>
-	<p>
+<h1>{{ Lang::get('messages.project_name') }}</h1>
+<p>
+	@if (Auth::check())
 		{{ Auth::user()->first_name }}
 		{{ Auth::user()->last_name }}
 		{{ HTML::link('logout', 'Logout') }}
-	</p>
-</div>
+	@endif
+</p>

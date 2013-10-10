@@ -1,5 +1,3 @@
 <!-- app.views/footer.blade.php -->
 
-<div class="footer">
-	<small>today is {{ date('d.m.Y') }}</small>
-</div>
+<small>{{ Lang::get('messages.footer_message') }} {{ date('d.m.Y') }}</small>
