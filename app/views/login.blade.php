@@ -2,6 +2,10 @@
 
 {{ Form::open(array('action' => 'LoginController@processLogin')) }}
 
+	<!-- validator errors -->
+	<p>{{ $errors->first('email') }}</p>
+	<p>{{ $errors->first('password') }}</p>
+	
 	@if (Session::has('login_errors'))
 		<span class="error">Email or password incorrect</span>
 	@endif
