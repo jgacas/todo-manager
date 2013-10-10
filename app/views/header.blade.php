@@ -1,6 +1,6 @@
 <!-- app/views/header.blade.php -->
 
-<h1>{{ Lang::get('messages.project_name') }}</h1>
+<h1 id="headertitle"> {{ Lang::get('messages.project_name') }}</h1>
 <p>
 	@if (Auth::check())
 		{{ Auth::user()->first_name }}

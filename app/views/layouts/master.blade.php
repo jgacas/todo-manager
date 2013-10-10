@@ -9,8 +9,7 @@
 	<title>{{ Lang::get('messages.project_name') }}</title>
 	
 	<!-- load default CSS file -->
-	{{ HTML::style('style.css') }}
-	@yield('scripts')
+	{{ HTML::style('style/style.css') }}
 </head>
 <body>
 	<div id='container'>
@@ -26,5 +25,9 @@
 			@include('footer')
 		</div>
 	</div>
+	<!-- load script files -->
+	{{ HTML::script('js/jquery-1.10.2.min.js') }}
+	{{ HTML::script('js/script.js') }}
+	@yield('scripts')
 </body>
 </html>
