@@ -3,6 +3,7 @@
 @section('content')
 {{ Form::open(array('action' => 'LoginController@processLogin')) }}
 
+	<h2>Login</h2>
 	<!-- validator errors -->
 	<p>{{ $errors->first('email') }}</p>
 	<p>{{ $errors->first('password') }}</p>
@@ -12,19 +13,20 @@
 	@endif
 
 	<!-- username -->
-	<p>
-	{{ Form::label('email', Lang::get('messages.email_address') ) }}
-	{{ Form::email('email') }}
-	</p>
-	
+	<div class="control-group">
+		{{ Form::label('email', Lang::get('messages.email_address'), array('class' => 'control-label') ) }}
+		{{ Form::email('email') }}
+	</div>
 	<!-- password -->
-	<p>
-	{{ Form::label('password', Lang::get('messages.password')) }}
-	{{ Form::password('password') }}
-	</p>
-	
+	<div class="control-group">	
+		{{ Form::label('password', Lang::get('messages.password', array('class' => 'control-label'))) }}
+		{{ Form::password('password') }}
+	</div>
 	<!-- submit -->
-	<p>{{ Form::submit(Lang::get('messages.login')) }}</p>
+	<div class="control-group">
+		<button type="submit" class="btn btn-large btn-primary">Login</button>
+	</div>
+	
 	
 {{ Form::close() }}
 @stop

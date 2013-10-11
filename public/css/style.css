@@ -1,15 +1,16 @@
 @CHARSET "UTF-8";
 
 body {
+	/* padding-top: 70px; */
 	text-align: center;
 }
 
 #container {
 	margin: 0 auto;
-	width: 800px;
+	width: 1200px;
 	text-align: left;
 	
-	background-color: #FFE773;
+	/* background-color: #FFE773; */
 }
 
 #content {
@@ -17,11 +18,11 @@ body {
 }
 
 #header {
-	background-color: #9F3ED5;
+	/* background-color: #9F3ED5; */
 	padding:10px 10px;
 }
 
 #footer {
-	background-color: #6C8CD5;
+	/* background-color: #6C8CD5; */
 	padding:10px 10px;
 }

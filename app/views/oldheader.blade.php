@@ -1,4 +1,4 @@
-<!-- app/views/header.blade.php -->
+<!-- app/views/oldheader.blade.php -->
 
 <h1 id="headertitle"> {{ Lang::get('messages.project_name') }}</h1>
 <p>

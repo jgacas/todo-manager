@@ -1,38 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
 
 <!-- app/views/layouts/master.blade.php -->
 
-<!doctype html>
-<html lang="en">
 <head>
-	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8"> <!-- name="viewport" content="width=device-width, initial-scale=1.0" -->
 	@yield('meta_info')
 	
 	<title>{{ Lang::get('messages.project_name') }}</title>
 	
 	<!-- load default CSS file -->
-	{{ HTML::style('css/style.css') }}
-	{{ HTML::style('css/bootsrap.css') }}
-	{{ HTML::style('css/bootstrap-responsive.css') }}
+	<!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+	<!-- {{ HTML::style('css/bootstrap.min.css') }} -->
+	<!-- {{ HTML::style('css/bootstrap.css') }} -->
+	<!-- {{ HTML::style('css/bootstrap-responsive.css') }} -->
+	<!-- {{ HTML::style('css/style.css') }}  -->
 </head>
 <body>
-	<div id='container'>
-		<div id='header'>
-			@include('oldheader')
-		</div>
-		
-		<div id='content'>
+	<div class="container">
+		@include('header')
+		<div class="hero-unit">
 			@yield('content')
 		</div>
-		
-		<div id='footer'>
-			@include('footer')
-		</div>
+		@include('footer')
 	</div>
-	
 	<!-- load script files -->
 	{{ HTML::script('js/jquery-1.10.2.min.js') }}
 	{{ HTML::script('js/bootstrap.min.js') }}
-	{{ HTML::script('js/script.js') }}
+	<!-- {{ HTML::script('js/script.js') }}  -->
 	@yield('scripts')
 </body>
 </html>
