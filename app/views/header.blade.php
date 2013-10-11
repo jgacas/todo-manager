@@ -5,17 +5,12 @@
 		<div class="container">
 			<ul class="nav">
 				<li class="active"><a href="#">ToDo Manager</a></li>
-				@if (Auth::check())
-				<li class="dropdown">
-		        	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-		        		{{ Auth::user()->first_name }}
-		        		{{ Auth::user()->last_name }} 
-		        		<b class="caret"></b>
-		        	</a>
-		        	<ul class="dropdown-menu">
-		          		<li>{{ HTML::link('logout', 'Logout') }}</li>
-		        	</ul>
-		        </li>
+				@if (Route::currentRouteName() == 'login')
+					@include('loginheader')
+				@elseif (Route::currentRouteName() == 'register')
+					<!-- nothing to display on register -->
+				@else
+					@include('homeheader')
 		        @endif
 			</ul>
 		</div>

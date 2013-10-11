@@ -7,5 +7,7 @@ return array(
 	'email_address'		=> 'Email address',
 	'password'			=> 'Password',
 	'login'				=> 'Login',
-	'login_error'		=> 'Email or password incorrect'
+	'login_error'		=> 'Email or password incorrect',
+	'firstName'			=> 'First Name',
+	'lastName'			=> 'Last Name'
 );

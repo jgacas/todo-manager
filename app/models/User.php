@@ -20,6 +20,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	protected $hidden = array('password');
 
 	/**
+	 * Filliable attributes
+	 * 
+	 * @var array
+	 */
+	protected $fillable = array('first_name', 'last_name', 'email', 'password');
+	
+	/**
 	 * Get the unique identifier for the user.
 	 *
 	 * @return mixed
@@ -47,6 +54,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public function getReminderEmail()
 	{
 		return $this->email;
+	}
+	
+	public function setPasswordAttribute($value)
+	{
+		$this->attributes['password'] = Hash::make($value);
 	}
 
 }

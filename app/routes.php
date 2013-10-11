@@ -24,13 +24,33 @@ Route::get('/', array('as' => 'home', 'before' => 'auth', function()
 /*
  * Routes for login, logout and for processing login.
  */
-Route::get('login', 'LoginController@login');
+Route::get('login', array(
+	'as' 	=> 'login',
+	'uses' 	=> 'LoginController@login'
+));
 
 Route::get('logout', 'LoginController@logout');
 
+/* */
 Route::post('processLogin', array(
-	'before' => 'csrf', 
-	'uses' => 'LoginController@processLogin'
+	'before' 	=> 'csrf', 
+	'uses' 		=> 'LoginController@processLogin'
 ));
 
+/* ****************************** 
+ * Displays registration form. 
+ * ******************************/
+Route::get('register', array(
+	'as' 	=> 'register',
+	'uses'	=> 'RegisterController@register'
+));
+
+/********************************************** 
+ * Processes user registration. 
+ **********************************************/
+Route::post('processRegistration', array(
+	'before'	=> 'csrf',
+	'as'		=> 'processRegistration',
+	'uses'		=> 'RegisterController@processRegistration'
+));
 

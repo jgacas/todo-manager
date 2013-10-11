@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+<!-- app/views/login.blade.php -->
+
 @section('content')
 {{ Form::open(array('action' => 'LoginController@processLogin')) }}
 
@@ -26,7 +28,6 @@
 	<div class="control-group">
 		<button type="submit" class="btn btn-large btn-primary">Login</button>
 	</div>
-	
 	
 {{ Form::close() }}
 @stop
