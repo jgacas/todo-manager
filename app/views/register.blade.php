@@ -8,12 +8,6 @@
 
 	<h2>Register</h2>
 	
-	<!-- validator errors -->
-	<p>{{ $errors->first('email') }}</p>
-	<p>{{ $errors->first('password') }}</p>
-	<p>{{ $errors->first('first_name') }}</p>
-	<p>{{ $errors->first('last_name') }}</p>
-	
 	@if (Session::has('login_errors'))
 		<span class="error">{{ Lang::get('messages.login_error') }}</span>
 	@endif
@@ -25,6 +19,7 @@
 		</label>
 		<div class="controls">
 			{{ Form::email('email', Input::old('email')) }}
+			<span class="help-inline">{{ $errors->first('email') }}</span>
 		</div>
 	</div>
 	
@@ -35,6 +30,7 @@
 		</label>
 		<div class="controls">
 			{{ Form::password('password') }}
+			<span class="help-inline">{{ $errors->first('password') }}</span>
 		</div>
 	</div>
 	
@@ -55,6 +51,7 @@
 		</label>
 		<div class="controls">
 			{{ Form::text('first_name', Input::old('first_name')) }}
+			<span class="help-inline">{{ $errors->first('first_name') }}</span>
 		</div>
 	</div>
 	
@@ -65,6 +62,7 @@
 		</label>
 		<div class="controls">
 			{{ Form::text('last_name', Input::old('last_name')) }}
+			<span class="help-inline">{{ $errors->first('last_name') }} </span>
 		</div>
 	</div>
 	
