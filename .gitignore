@@ -8,3 +8,5 @@ composer.lock
 .classpth
 .settings
 .buildpath
+todo-manager.sublime-project
+todo-manager.sublime-workspace
