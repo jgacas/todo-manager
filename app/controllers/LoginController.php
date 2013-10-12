@@ -12,7 +12,7 @@ class LoginController extends BaseController
 		} 
 		else
 		{
-			return Response::make(View::make('login'), 200, $this->getHeaderToDisableCache());
+			return Response::make(View::make('login'), 200, $this->getHeadersToDisableCache());
 		}
 	
 	}
@@ -58,12 +58,13 @@ class LoginController extends BaseController
 		}
 	}
 	
-	private function getHeaderToDisableCache()
+	private function getHeadersToDisableCache()
 	{
 		$headers = array();
-                $headers['Expires'] = 'Tue, 1 Jan 1980 00:00:00 GMT';
-                $headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0';
-                $headers['Pragma'] = 'no-cache';
+        $headers['Expires'] = 'Tue, 1 Jan 1980 00:00:00 GMT';
+        $headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0';
+        $headers['Pragma'] = 'no-cache';
+
 		return $headers;
 	}
 } 
