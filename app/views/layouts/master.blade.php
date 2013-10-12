@@ -4,7 +4,7 @@
 <!-- app/views/layouts/master.blade.php -->
 
 <head>
-	<meta charset="utf-8"> <!-- name="viewport" content="width=device-width, initial-scale=1.0" -->
+	<meta charset="utf-8">
 	@yield('meta_info')
 	
 	<title>{{ Lang::get('messages.project_name') }}</title>
