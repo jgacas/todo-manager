@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="todoManager">
 
 <!-- app/views/layouts/master.blade.php -->
 
@@ -10,12 +10,9 @@
 	<title>{{ Lang::get('messages.project_name') }}</title>
 	
 	<!-- load default CSS file -->
-	<!-- Bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
-	<!-- {{ HTML::style('css/bootstrap.min.css') }} -->
-	<!-- {{ HTML::style('css/bootstrap.css') }} -->
-	<!-- {{ HTML::style('css/bootstrap-responsive.css') }} -->
-	<!-- {{ HTML::style('css/style.css') }}  -->
+	<!-- Bootstrap css -->
+	{{ HTML::style('css/bootstrap.min.css') }}
+
 </head>
 <body>
 	<div class="container">
@@ -28,7 +25,10 @@
 	<!-- load script files -->
 	{{ HTML::script('js/jquery-1.10.2.min.js') }}
 	{{ HTML::script('js/bootstrap.min.js') }}
-	<!-- {{ HTML::script('js/script.js') }}  -->
+	<!-- {{ HTML::script('js/script.js') }} -->
+	{{ HTML::script('js/angular.min.js') }}
+	{{ HTML::script('js/app.js') }}
+	{{ HTML::script('js/todoManagerCtrl.js') }}
 	@yield('scripts')
 </body>
 </html>

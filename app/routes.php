@@ -53,4 +53,3 @@ Route::post('processRegistration', array(
 	'as'		=> 'processRegistration',
 	'uses'		=> 'RegisterController@processRegistration'
 ));
-

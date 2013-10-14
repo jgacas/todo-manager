@@ -13,7 +13,7 @@
 	@endif
 	
 	<!-- email address -->
-	<div class="control-group">
+	<div class="control-group error">
 		<label for="email" class="control-label">
 			{{ Lang::get('messages.email_address') }}
 		</label>
@@ -24,7 +24,7 @@
 	</div>
 	
 	<!-- password -->
-	<div class="control-group">
+	<div class="control-group error">
 		<label for="password" class="control-label">
 			{{ Lang::get('messages.password') }}
 		</label>
@@ -35,7 +35,7 @@
 	</div>
 	
 	<!-- confirm password -->
-	<div class="control-group">
+	<div class="control-group error">
 		<label for="password_confirmation" class="control-label">
 			Confirm password
 		</label>
@@ -45,7 +45,7 @@
 	</div>
 	
 	<!-- first name -->
-	<div class="control-group">
+	<div class="control-group error">
 		<label for="first_name" class="control-label">
 			{{ Lang::get('messages.firstName') }}
 		</label>
@@ -56,7 +56,7 @@
 	</div>
 	
 	<!-- last name -->
-	<div class="control-group">
+	<div class="control-group error">
 		<label for="last_name" class="control-label">
 			{{ Lang::get('messages.lastName') }}
 		</label>

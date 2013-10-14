@@ -1,0 +1,20 @@
+<!--  -->
+
+<section ng-controller="TodoCtrl">
+	<h1>todos</h1>
+	<form ng-submit="addTodo()">
+		<input type="checkbox" placeholder="Your todo..." ng-model="newTodo">
+	</form>
+	<section>
+		<ul>
+			<li ng-repeat="todo in todos">
+				<input type="checkbox" ng-model="todo.completed">
+				<label ng-dblclick="editTodo(todo)">You todo</label>
+				<button ng-click="removeTodo(todo)"></button>
+				<form ng-submit="doneEditing(todo)">
+					<input ng-model="todo.title">
+				</form>
+			</li>
+		</ul>
+	</section>
+</section>

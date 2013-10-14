@@ -7,14 +7,14 @@
 
 	<h2>Login</h2>
 	
-	<div class="control-group-error">
+	<div class="control-group error">
 	@if (Session::has('login_errors'))
 		<span class="help-inline">{{ Lang::get('messages.login_error') }}</span>
 	@endif
 	</div>
 
 	<!-- username -->
-	<div class="control-group">
+	<div class="control-group error">
 		{{ Form::label('email', Lang::get('messages.email_address'), array('class' => 'control-label') ) }}
 		<div class="controls">
 			{{ Form::email('email') }}
@@ -24,7 +24,7 @@
 		</div>
 	</div>
 	<!-- password -->
-	<div class="control-group">	
+	<div class="control-group error">	
 		{{ Form::label('password', Lang::get('messages.password', array('class' => 'control-label'))) }}
 		<div class="controls">	
 			{{ Form::password('password') }}
