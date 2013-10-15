@@ -1,6 +1,6 @@
 todoManager.controller('TodoCtrl', function TodoCtrl($scope, $location) {
 
-	var todos = $scope.todos = null;
+	var todos = $scope.todos = [];
 
 	$scope.newTodo = '';
 	$scope.editedTodo = null;
@@ -10,7 +10,18 @@ todoManager.controller('TodoCtrl', function TodoCtrl($scope, $location) {
 	}
 
 	$scope.addTodo = function() {
-		// implement
+		
+		var newTodo = $scope.newTodo.trim();
+		if (!newTodo.length) {
+			return;
+		}
+
+		todos.push({
+			title: newTodo,
+			completed: false
+		});
+
+		$scope.newTodo = '';
 	}
 
 	$scope.editTodo = function(todo) {
@@ -18,7 +29,7 @@ todoManager.controller('TodoCtrl', function TodoCtrl($scope, $location) {
 	}
 
 	$scope.removeTodo = function(todo) {
-		// implement
+		todos.splice(todos.indexOf(todo), 1);
 	}
 
 	$scope.doneEditing = function(todo) {

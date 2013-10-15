@@ -2,17 +2,20 @@
 
 <section ng-controller="TodoCtrl">
 	<h1>todos</h1>
-	<form ng-submit="addTodo()">
-		<input type="checkbox" placeholder="Your todo..." ng-model="newTodo">
+	<form id="todo-form" class="form-inline" ng-submit="addTodo()">
+		<div class="form-group">
+			<input id="new-todo" class="form-control" type="text" placeholder="What needs to be done?" ng-model="newTodo" autofocus>
+		</div>
 	</form>
-	<section>
-		<ul>
+	<section id="main" ng-show="todos.length">
+		<ul id="todo-list" style="list-style: none;">
 			<li ng-repeat="todo in todos">
-				<input type="checkbox" ng-model="todo.completed">
-				<label ng-dblclick="editTodo(todo)">You todo</label>
-				<button ng-click="removeTodo(todo)"></button>
-				<form ng-submit="doneEditing(todo)">
-					<input ng-model="todo.title">
+				<form class="form-inline" ng-submit="doneEditing(todo)">
+				    <label class="checkbox"><input type="checkbox">Done</label>
+						<!-- <form ng-submit="doneEditing(todo)"> -->
+						<input id="todotitle" type="text" class="input-large" ng-model="todo.title">
+						<!-- </form> -->
+				 		<button class="btn btn-small btn-primary" ng-click="removeTodo(todo)">Remove</button>
 				</form>
 			</li>
 		</ul>
