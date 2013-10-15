@@ -8,14 +8,16 @@
 		</div>
 	</form>
 	<section id="main" ng-show="todos.length">
+		<h4>List of tasks</h4>
 		<ul id="todo-list" style="list-style: none;">
 			<li ng-repeat="todo in todos">
-				<form class="form-inline" ng-submit="doneEditing(todo)">
-				    <label class="checkbox"><input type="checkbox">Done</label>
-						<!-- <form ng-submit="doneEditing(todo)"> -->
-						<input id="todotitle" type="text" class="input-large" ng-model="todo.title">
-						<!-- </form> -->
-				 		<button class="btn btn-small btn-primary" ng-click="removeTodo(todo)">Remove</button>
+				<form class="form-inline" autofocus>
+				    <input type="checkbox" ng-model="todo.completed">
+					<input id="todotitle" type="text" class="form-control" ng-model="todo.title">
+					<button class="btn btn-small btn-success" ng-click="doneEditing(todo)">Change</button>
+					<button class="btn btn-small btn-primary" ng-click="moveUp(todo)">up</button>
+					<button class="btn btn-small btn-primary" ng-click="moveDown(todo)">down</button>
+				 	<button class="btn btn-small btn-danger" ng-click="removeTodo(todo)">Remove</button>
 				</form>
 			</li>
 		</ul>

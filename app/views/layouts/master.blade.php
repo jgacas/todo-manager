@@ -27,8 +27,10 @@
 	{{ HTML::script('js/bootstrap.min.js') }}
 	<!-- {{ HTML::script('js/script.js') }} -->
 	{{ HTML::script('js/angular.min.js') }}
+	{{ HTML::script('js/angular-resource.min.js') }}
 	{{ HTML::script('js/app.js') }}
 	{{ HTML::script('js/todoManagerCtrl.js') }}
+	{{ HTML::script('js/services/services.js') }}
 	@yield('scripts')
 </body>
 </html>

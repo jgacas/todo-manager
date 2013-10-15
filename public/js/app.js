@@ -1,6 +1,6 @@
 
 
-var todoManager = angular.module('todoManager', []);
+var todoManager = angular.module('todoManager', ['todoServices']);
 
 todoManager.config(['$routeProvider',
 	function($routeProvider) {

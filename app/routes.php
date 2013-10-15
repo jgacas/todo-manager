@@ -53,3 +53,8 @@ Route::post('processRegistration', array(
 	'as'		=> 'processRegistration',
 	'uses'		=> 'RegisterController@processRegistration'
 ));
+
+/* Route to 'todo' resource. */
+Route::resource('todos', 'TodoController',
+		array('only' => array('index', 'store', 'update', 'destroy'))
+	);
