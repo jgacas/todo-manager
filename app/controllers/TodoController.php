@@ -20,7 +20,8 @@ class TodoController extends \BaseController {
 	public function store()
 	{
 		$todo = Todo::create(Input::json()->all());
-		return $todo->toJson();
+		// return $todo->toJson();
+		return Response::json($todo, 200);
 	}
 
 	/**

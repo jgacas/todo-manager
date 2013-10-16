@@ -10,7 +10,7 @@
 	<section id="main" ng-show="todos.length">
 		<h4>List of tasks</h4>
 		<ul id="todo-list" style="list-style: none;">
-			<li ng-repeat="todo in todos">
+			<li ng-repeat="todo in todos | orderBy:orderProp">
 				<form class="form-inline" autofocus>
 				    <input type="checkbox" ng-model="todo.completed">
 					<input id="todotitle" type="text" class="form-control" ng-model="todo.title">
