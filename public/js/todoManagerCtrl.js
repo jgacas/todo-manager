@@ -9,8 +9,7 @@ todoManager.controller('TodoCtrl', function TodoCtrl($scope, $location, TodoRest
 		$location.path('/');
 	}
 
-	$scope.addTodo = function() {
-		
+	$scope.addTodo = function() {		
 		var newTodo = $scope.newTodo.trim();
 		if (!newTodo.length) {
 			return;
@@ -25,16 +24,13 @@ todoManager.controller('TodoCtrl', function TodoCtrl($scope, $location, TodoRest
 			todo.id = response.id;
 		});
 		todos.push(todo);
-		
 		$scope.newTodo = '';
 	}
 
 	$scope.removeTodo = function(todo) {
-		// remove todo
 		todos.splice(todos.indexOf(todo), 1);
 		TodoRestClient.remove(todo);
-		// update importance of lower priority todos
-		for (i=0; i<todos.length; i++) {
+		for (var i = 0, len = todos.length; i < len; i++) {
 			if (todos[i].importance > todo.importance) {
 				todos[i].importance--;
 				TodoRestClient.update(todos[i]);
@@ -43,34 +39,38 @@ todoManager.controller('TodoCtrl', function TodoCtrl($scope, $location, TodoRest
 	}
 
 	$scope.doneEditing = function(todo) {
-		var position = todos.indexOf(todo);
-		todos[position] = todo;
-		TodoRestClient.update(todo);
+		if (todo.title.length) {
+			TodoRestClient.update(todo);
+		} else {
+			alert("Todo cannot be empty!");
+		}
 	}
 
 	$scope.moveUp = function(todo) {
-		if (todo.importance > 0) {
-			var index = todos.indexOf(todo);
-			todos[index].importance--;
-			TodoRestClient.update(todos[index]);
-			todos[index-1].importance++;
-			TodoRestClient.update(todos[index-1]);
+		var lookup = {};
+		for (var i = 0, len = todos.length; i < len; i++) {
+    		lookup[todos[i].importance] = todos[i];
 		}
-		alert(todos.indexOf(todo));
+		var previous = lookup[todo.importance - 1];
+		if (previous) {
+			todo.importance--;
+			TodoRestClient.update(todo);
+			previous.importance++;
+			TodoRestClient.update(previous);
+		}
 	}
 
 	$scope.moveDown = function(todo) {
-		if (todo.importance < todos.length-1) {
-			var index = todos.indexOf(todo);
-			var swapIndex = index+1;
-			todos[index].importance++;
-			TodoRestClient.update(todos[index]);
-			todos[swapIndex].importance--;
-			TodoRestClient.update(todos[swapIndex]);	
+		var lookup = {};
+		for (var i = 0, len = todos.length; i < len; i++) {
+    		lookup[todos[i].importance] = todos[i];
 		}
-	}
-
-	Array.prototype.move = function (from, to) {
-  		this.splice(to, 0, this.splice(from, 1)[0]);
+		var next = lookup[todo.importance + 1];
+		if (next) {
+			todo.importance++;
+			TodoRestClient.update(todo);
+			next.importance--;
+			TodoRestClient.update(next);
+		}
 	}
 });

@@ -11,13 +11,14 @@
 		<h4>List of tasks</h4>
 		<ul id="todo-list" style="list-style: none;">
 			<li ng-repeat="todo in todos | orderBy:orderProp">
-				<form class="form-inline" autofocus>
-				    <input type="checkbox" ng-model="todo.completed">
-					<input id="todotitle" type="text" class="form-control" ng-model="todo.title">
-					<button class="btn btn-small btn-success" ng-click="doneEditing(todo)">Change</button>
-					<button class="btn btn-small btn-primary" ng-click="moveUp(todo)">up</button>
-					<button class="btn btn-small btn-primary" ng-click="moveDown(todo)">down</button>
-				 	<button class="btn btn-small btn-danger" ng-click="removeTodo(todo)">Remove</button>
+				<form name="todoform" class="form-inline" ng-submit="doneEditing(todo)">
+				    <input type="checkbox" ng-model="todo.completed" ng-checked="todo.completed == 1" ng-click="doneEditing(todo)">
+					<a class="btn btn-small btn-primary" ng-click="moveUp(todo)">&#x2191;</a>
+					<a class="btn btn-small btn-primary" ng-click="moveDown(todo)">&#x2193;</a>
+					<input type="text" class="form-control" name="todotitle" ng-model="todo.title" required>
+					<button class="btn btn-small btn-success">Edit</button>
+				 	<a class="btn btn-small btn-danger" ng-click="removeTodo(todo)">Remove</a>
+				    <span class="help-inline" ng-show="todoform.todotitle.$error.required">Empty tasks not allowed!</span>
 				</form>
 			</li>
 		</ul>
