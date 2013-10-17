@@ -9,7 +9,7 @@ class TodoController extends \BaseController {
 	 */
 	public function index()
 	{
-		return Todo::all()->toJson();
+		return Response::json(Todo::all(), 200);
 	}
 
 	/**
@@ -20,7 +20,7 @@ class TodoController extends \BaseController {
 	public function store()
 	{
 		$todo = Todo::create(Input::json()->all());
-		// return $todo->toJson();
+		
 		return Response::json($todo, 200);
 	}
 
@@ -32,14 +32,10 @@ class TodoController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$todo = Todo::find($id);
-		if (is_null($todo)) 
-		{
-			Response::json('Todo not found', 404);
-		}
+		$todo = Todo::findOrFail($id);
 		$todo->update(Input::json()->all());
 
-		return $todo->toJson();
+		return Response::json($todo, 200);
 	}
 
 	/**
@@ -50,15 +46,11 @@ class TodoController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		$todo = Todo::find($id);
-		if (is_null($todo)) 
-		{
-			Response::json('Todo not found', 404);
-		}
+		$todo = Todo::findOrFail($id);
 		$deleted = $todo;
 		$todo->delete();
 
-		return $deleted->toJson();
+		return Response::json($deleted);
 	}
 
 }
