@@ -5,8 +5,8 @@ var todoManager = angular.module('todoManager', ['todoServices']);
 todoManager.config(['$routeProvider',
 	function($routeProvider) {
 		$routeProvider.when('/', {
-			templateUrl: 'partials/home.html',
-			controller: 'TodoCtrl'
+			templateUrl: 'js/app/views/home.html',
+			controller: 'TodoListCtrl'
 		}).
 		otherwise({
 			redirectTo: '/'

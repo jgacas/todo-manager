@@ -27,12 +27,12 @@ class RestApiTest extends TestCase {
 
 	public function testPostTodo()
 	{
-		$postresponseData = json_encode(array(
+		$postResponseData = json_encode(array(
 			'title' => 'read javascript book',
 			'completed' => '0',
 			'importance' => '1'
 		));
-		$response = $this->call('POST', 'todos', [], [], []	, $postresponseData);
+		$response = $this->call('POST', 'todos', [], [], []	, $postResponseData);
 
 		// assert response
 		$responseresponseData = json_decode($response->getContent());
@@ -42,7 +42,7 @@ class RestApiTest extends TestCase {
 		$this->assertEquals('0', $responseresponseData->completed);
 		$this->assertEquals('1', $responseresponseData->importance);
 
-		// assert responseDatabase
+		// assert database
 		$dbresponseData = Todo::find(2);
 		$this->assertEquals('read javascript book', $responseresponseData->title);
 		$this->assertEquals('0', $responseresponseData->completed);
@@ -51,7 +51,7 @@ class RestApiTest extends TestCase {
 
 	public function testUpdateTodo()
 	{
-		$postresponseData = json_encode(array(
+		$postResponseData = json_encode(array(
 			'id' => '1',
 			'title' => 'learn angularjs',
 			'completed' => '1',
@@ -59,7 +59,7 @@ class RestApiTest extends TestCase {
 		));
 
 		// assert response
-		$response = $this->call('PUT', 'todos/1', [], [], [], $postresponseData);
+		$response = $this->call('PUT', 'todos/1', [], [], [], $postResponseData);
 		$responseresponseData = json_decode($response->getContent());
 
 		$this->assertResponseOk($response);
@@ -67,7 +67,7 @@ class RestApiTest extends TestCase {
 		$this->assertEquals('1', $responseresponseData->completed);
 		$this->assertEquals('0', $responseresponseData->importance);
 
-		// assert responseDatabase
+		// assert database
 		$dbresponseData = Todo::find(1);
 
 		$this->assertEquals('learn angularjs', $dbresponseData->title);
@@ -79,7 +79,7 @@ class RestApiTest extends TestCase {
 	{
 		$response = $this->call('DELETE', 'todos/1');
 
-		// assert
+		// assert response
 		$responseresponseData = json_decode($response->getContent());
 
 		$this->assertResponseOk($response);
@@ -88,7 +88,7 @@ class RestApiTest extends TestCase {
 		$this->assertEquals('0', $responseresponseData->completed);
 		$this->assertEquals('0', $responseresponseData->importance);
 
-		// assert responseDatabase
+		// assert database
 		$dbresponseData = Todo::find(1);
 		$this->assertEquals(null, $dbresponseData);
 	}

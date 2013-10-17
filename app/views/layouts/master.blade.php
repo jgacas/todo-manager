@@ -23,14 +23,13 @@
 		@include('footer')
 	</div>
 	<!-- load script files -->
-	{{ HTML::script('js/jquery-1.10.2.min.js') }}
-	{{ HTML::script('js/bootstrap.min.js') }}
-	<!-- {{ HTML::script('js/script.js') }} -->
-	{{ HTML::script('js/angular.min.js') }}
-	{{ HTML::script('js/angular-resource.min.js') }}
-	{{ HTML::script('js/app.js') }}
-	{{ HTML::script('js/todoManagerCtrl.js') }}
-	{{ HTML::script('js/services/services.js') }}
+	{{ HTML::script('js/vendor/jquery-1.10.2.min.js') }}
+	{{ HTML::script('js/vendor/bootstrap.min.js') }}
+	{{ HTML::script('js/vendor/angular.min.js') }}
+	{{ HTML::script('js/vendor/angular-resource.min.js') }}
+	{{ HTML::script('js/app/app.js') }}
+	{{ HTML::script('js/app/controllers/todoManagerCtrls.js') }}
+	{{ HTML::script('js/app/services/services.js') }}
 	@yield('scripts')
 </body>
 </html>

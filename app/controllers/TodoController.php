@@ -1,6 +1,11 @@
 <?php
 
-class TodoController extends \BaseController {
+// app/controllers/TodoController.php
+
+/**
+ * Implementation of RESTful API for handling todo list.
+ */
+class TodoController extends BaseController {
 
 	/**
 	 * Display a listing of the resource.

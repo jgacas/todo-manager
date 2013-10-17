@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\View;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -13,48 +11,56 @@ use Illuminate\Support\Facades\View;
 |
 */
 
-/*
- * Home application route. User must be authenticated to access the route. 
+/**
+ * Home application route. User must be authenticated to access it. 
  */
 Route::get('/', array('as' => 'home', 'before' => 'auth', function()
 {
 	return View::make('home');
 }));
 
-/*
- * Routes for login, logout and for processing login.
+/**
+ * Route that handles user login process.
  */
 Route::get('login', array(
-	'as' 	=> 'login',
-	'uses' 	=> 'LoginController@login'
+	'before'	=> 'guest', // if user is authenticated send her/him home
+	'as' 		=> 'login',
+	'uses' 		=> 'LoginController@login'
 ));
 
+/**
+ * Route that handles user logout.
+ */
 Route::get('logout', 'LoginController@logout');
 
-/* */
+/**
+ * Route that handles user login process.
+ */
 Route::post('processLogin', array(
 	'before' 	=> 'csrf', 
 	'uses' 		=> 'LoginController@processLogin'
 ));
 
-/* ****************************** 
- * Displays registration form. 
- * ******************************/
+/**
+ * Route that handles user registration form.
+ */
 Route::get('register', array(
 	'as' 	=> 'register',
 	'uses'	=> 'RegisterController@register'
 ));
 
-/********************************************** 
- * Processes user registration. 
- **********************************************/
+/** 
+ * Route that handles user registration process.
+ */
 Route::post('processRegistration', array(
 	'before'	=> 'csrf',
 	'as'		=> 'processRegistration',
 	'uses'		=> 'RegisterController@processRegistration'
 ));
 
-/* Route to 'todo' resource. */
-Route::resource('todos', 'TodoController',
-		array('only' => array('index', 'store', 'update', 'destroy'))
-	);
+/**
+ * Route to the REST API that handles todo list.
+ */
+Route::resource('todos', 'TodoController', array(
+	'only' => array('index', 'store', 'update', 'destroy')
+));

@@ -2,7 +2,7 @@
 
 var todoServices = angular.module('todoServices', ['ngResource']);
 
-todoServices.factory('TodoRestClient', function($resource) {
+todoServices.factory('todosFactory', function($resource) {
 	return $resource('/todos/:id', {id : '@id'}, {
 		query: {method:'GET', params:{id:''}, isArray:true},
 		save: {method:'POST'},

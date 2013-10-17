@@ -6,14 +6,7 @@ class LoginController extends BaseController
 {
 	public function login()
 	{
-		if (Auth::check()) 
-		{
-			return Redirect::route('home');
-		} 
-		else
-		{
-			return Response::make(View::make('login'), 200, $this->getHeadersToDisableCache());
-		}
+		return Response::make(View::make('login'), 200, $this->getHeadersToDisableCache());
 	}
 	
 	public function logout()

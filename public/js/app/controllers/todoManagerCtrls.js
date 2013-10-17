@@ -1,6 +1,6 @@
-todoManager.controller('TodoCtrl', function TodoCtrl($scope, $location, TodoRestClient) {
+todoManager.controller('TodoListCtrl', function TodoListCtrl($scope, $location, todosFactory) {
 
-	var todos = $scope.todos = TodoRestClient.query();
+	var todos = $scope.todos = todosFactory.query();
 	$scope.orderProp = 'importance';
 	$scope.newTodo = '';
 	$scope.editedTodo = null;
@@ -20,7 +20,7 @@ todoManager.controller('TodoCtrl', function TodoCtrl($scope, $location, TodoRest
 			completed: false,
 			importance: todos.length
 		};
-		TodoRestClient.save(todo, function(response) {
+		todosFactory.save(todo, function(response) {
 			todo.id = response.id;
 		});
 		todos.push(todo);
@@ -29,48 +29,52 @@ todoManager.controller('TodoCtrl', function TodoCtrl($scope, $location, TodoRest
 
 	$scope.removeTodo = function(todo) {
 		todos.splice(todos.indexOf(todo), 1);
-		TodoRestClient.remove(todo);
+		todosFactory.remove(todo);
 		for (var i = 0, len = todos.length; i < len; i++) {
 			if (todos[i].importance > todo.importance) {
 				todos[i].importance--;
-				TodoRestClient.update(todos[i]);
+				todosFactory.update(todos[i]);
 			}
 		};
 	}
 
 	$scope.doneEditing = function(todo) {
 		if (todo.title.length) {
-			TodoRestClient.update(todo);
+			todosFactory.update(todo);
 		} else {
 			alert("Todo cannot be empty!");
 		}
 	}
 
 	$scope.moveUp = function(todo) {
-		var lookup = {};
-		for (var i = 0, len = todos.length; i < len; i++) {
-    		lookup[todos[i].importance] = todos[i];
-		}
-		var previous = lookup[todo.importance - 1];
+		var previous = _lookup(todos)[todo.importance - 1];
 		if (previous) {
+			// update list
 			todo.importance--;
-			TodoRestClient.update(todo);
 			previous.importance++;
-			TodoRestClient.update(previous);
+			// update database
+			todosFactory.update(todo);
+			todosFactory.update(previous);
 		}
 	}
 
 	$scope.moveDown = function(todo) {
+		var next = _lookup(todos)[todo.importance + 1];
+		if (next) {
+			// update list
+			todo.importance++;
+			next.importance--;
+			// update database
+			todosFactory.update(todo);
+			todosFactory.update(next);
+		}
+	}
+
+	var _lookup = function _lookup(todos) {
 		var lookup = {};
 		for (var i = 0, len = todos.length; i < len; i++) {
     		lookup[todos[i].importance] = todos[i];
 		}
-		var next = lookup[todo.importance + 1];
-		if (next) {
-			todo.importance++;
-			TodoRestClient.update(todo);
-			next.importance--;
-			TodoRestClient.update(next);
-		}
+		return lookup;
 	}
 });
