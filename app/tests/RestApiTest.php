@@ -7,14 +7,7 @@ class RestApiTest extends TestCase {
 
 	public function testGetAllTodos()
 	{
-		$user = new User(array(
-				'id' => '1',
-				'first_name' => 'John',
-				'last_name' => 'Doe',
-				'email'		=> 'john.d@vivifyideas.com',
-				'password'	=> Hash::make('funfunfun')
-			));
-		$this->be($user);
+		$this->be($this->getUser());
 
 		$response = $this->call('GET', 'todos');
 
@@ -36,14 +29,7 @@ class RestApiTest extends TestCase {
 
 	public function testPostTodo()
 	{
-		$user = new User(array(
-				'id' => '1',
-				'first_name' => 'John',
-				'last_name' => 'Doe',
-				'email'		=> 'john.d@vivifyideas.com',
-				'password'	=> Hash::make('funfunfun')
-			));
-		$this->be($user);
+		$this->be($this->getUser());
 
 		$postResponseData = json_encode(array(
 			'title' => 'read javascript book',
@@ -109,5 +95,16 @@ class RestApiTest extends TestCase {
 		// assert database
 		$dbresponseData = Todo::find(1);
 		$this->assertEquals(null, $dbresponseData);
+	}
+
+	private function getUser()
+	{
+		return new User(array(
+				'id' => '1',
+				'first_name' => 'John',
+				'last_name' => 'Doe',
+				'email'		=> 'john.d@vivifyideas.com',
+				'password'	=> Hash::make('funfunfun')
+			));
 	}
 }

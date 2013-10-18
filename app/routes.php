@@ -16,7 +16,7 @@
  */
 Route::get('/', array('as' => 'home', 'before' => 'auth', function()
 {
-	return View::make('home');
+	return View::make('Home');
 }));
 
 /**
@@ -61,6 +61,6 @@ Route::post('processRegistration', array(
 /**
  * Route to the REST API that handles todo list.
  */
-Route::resource('todos', 'TodoController', array(
+Route::resource('todos', 'TodosController', array(
 	'only' => array('index', 'store', 'update', 'destroy')
 ));

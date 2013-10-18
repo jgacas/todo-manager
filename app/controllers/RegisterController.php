@@ -12,7 +12,7 @@ class RegisterController extends BaseController
 		}
 		else
 		{
-			return View::make('register');
+			return View::make('Register');
 		}
 	}
 	

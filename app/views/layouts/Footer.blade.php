@@ -1,4 +1,4 @@
-<!-- app.views/footer.blade.php -->
+<!-- app.views/layouts/Footer.blade.php -->
 
 <hr>
 <div class="footer">

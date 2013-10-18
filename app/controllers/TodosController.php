@@ -5,7 +5,7 @@
 /**
  * Implementation of RESTful API for handling todo list.
  */
-class TodoController extends BaseController {
+class TodosController extends BaseController {
 
 	/**
 	 * Display a listing of the resource.

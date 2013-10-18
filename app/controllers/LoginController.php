@@ -6,7 +6,7 @@ class LoginController extends BaseController
 {
 	public function login()
 	{
-		return Response::make(View::make('login'), 200, $this->getHeadersToDisableCache());
+		return Response::make(View::make('Login'), 200, $this->getHeadersToDisableCache());
 	}
 	
 	public function logout()

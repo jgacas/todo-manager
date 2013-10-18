@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="todoManager">
 
-<!-- app/views/layouts/master.blade.php -->
+<!-- app/views/layouts/Master.blade.php -->
 
 <head>
 	<meta charset="utf-8">
@@ -16,11 +16,11 @@
 </head>
 <body>
 	<div class="container">
-		@include('header')
+		@yield('header')
 		<div class="hero-unit">
 			@yield('content')
 		</div>
-		@include('footer')
+		@include('layouts.Footer')
 	</div>
 	<!-- load script files -->
 	{{ HTML::script('js/vendor/jquery-1.10.2.min.js') }}
