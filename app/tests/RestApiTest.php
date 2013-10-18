@@ -7,6 +7,15 @@ class RestApiTest extends TestCase {
 
 	public function testGetAllTodos()
 	{
+		$user = new User(array(
+				'id' => '1',
+				'first_name' => 'John',
+				'last_name' => 'Doe',
+				'email'		=> 'john.d@vivifyideas.com',
+				'password'	=> Hash::make('funfunfun')
+			));
+		$this->be($user);
+
 		$response = $this->call('GET', 'todos');
 
 		// assert response
@@ -27,6 +36,15 @@ class RestApiTest extends TestCase {
 
 	public function testPostTodo()
 	{
+		$user = new User(array(
+				'id' => '1',
+				'first_name' => 'John',
+				'last_name' => 'Doe',
+				'email'		=> 'john.d@vivifyideas.com',
+				'password'	=> Hash::make('funfunfun')
+			));
+		$this->be($user);
+
 		$postResponseData = json_encode(array(
 			'title' => 'read javascript book',
 			'completed' => '0',

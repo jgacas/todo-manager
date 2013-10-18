@@ -14,7 +14,7 @@ class TodoController extends BaseController {
 	 */
 	public function index()
 	{
-		return Response::json(Todo::all(), 200);
+		return Response::json(User::find(Auth::user()->id)->todos, 200);
 	}
 
 	/**
@@ -24,7 +24,9 @@ class TodoController extends BaseController {
 	 */
 	public function store()
 	{
-		$todo = Todo::create(Input::json()->all());
+		$data = Input::json()->all();
+		$data['user_id'] = Auth::user()->id;
+		$todo = Todo::create($data);
 		
 		return Response::json($todo, 200);
 	}

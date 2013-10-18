@@ -61,4 +61,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		$this->attributes['password'] = Hash::make($value);
 	}
 
+	/**
+	 * User can have many todos - one to many relationship.
+	 *
+	 */
+	public function todos()
+	{
+		return $this->hasMany('Todo');
+	}
 }

@@ -4,6 +4,8 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 
 	protected $useDatabase = true;
 
+	protected $user;
+
 	/**
 	 * Creates the application.
 	 *
@@ -25,6 +27,14 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 	{
 		parent::setUp();
 
+		$user = new User(array(
+				'id' => '1',
+				'first_name' => 'John',
+				'last_name' => 'Doe',
+				'email'		=> 'john.d@vivifyideas.com',
+				'password'	=> Hash::make('funfunfun')
+			));
+		
 		if ($this->useDatabase)
 		{
 			$this->prepareDatabase();
