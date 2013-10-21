@@ -46,6 +46,24 @@ class TodosController extends BaseController {
 	}
 
 	/**
+	 * Update an array of todo entries in the storage.
+	 *
+	 * @return Response
+	 */
+	public function bulkUpdate()
+	{
+		$input = Input::json()->all();
+		$responseData = array();
+		foreach($input as $inputItem) {
+			$todo = Todo::findOrFail($inputItem['id']);
+			$todo->update($inputItem);
+			array_push($responseData, $todo);
+		}
+		// TODO check strange response content
+		return Response::json($responseData, 200);
+	}
+
+	/**
 	 * Remove the specified resource from storage.
 	 *
 	 * @param  int  $id
@@ -54,10 +72,9 @@ class TodosController extends BaseController {
 	public function destroy($id)
 	{
 		$todo = Todo::findOrFail($id);
-		$deleted = $todo;
 		$todo->delete();
 
-		return Response::json($deleted);
+		return Response::json($todo);
 	}
 
 }

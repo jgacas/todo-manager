@@ -43,6 +43,7 @@ Route::post('processLogin', array(
 
 /**
  * Route that handles user registration form.
+ *
  */
 Route::get('register', array(
 	'as' 	=> 'register',
@@ -51,6 +52,7 @@ Route::get('register', array(
 
 /** 
  * Route that handles user registration process.
+ *
  */
 Route::post('processRegistration', array(
 	'before'	=> 'csrf',
@@ -60,7 +62,16 @@ Route::post('processRegistration', array(
 
 /**
  * Route to the REST API that handles todo list.
+ *
  */
 Route::resource('todos', 'TodosController', array(
 	'only' => array('index', 'store', 'update', 'destroy')
+));
+
+/**
+ * Route, part of REST API, that is used to update an array of todo entries.
+ *
+ */
+Route::put('todos', array(
+	'uses' => 'TodosController@bulkUpdate'
 ));
